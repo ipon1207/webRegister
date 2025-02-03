@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ログインページ</title>
+</head>
+<body>
+<div class="login-container">
+    <h2>ログイン</h2>
+    <form method="post" th:action="@{/toLogin}">
+        <!-- エラーメッセージ表示 -->
+        <div th:if="${param.error}">
+            <div class="alert">
+                <span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message ?: 'ユーザー情報が存在しません'}"></span>
+            </div>
+        </div>
+
+        <!-- メールアドレス入力 -->
+        <div class="form-group">
+            <label for="username">メールアドレス</label>
+            <input type="text" id="username" name="username" placeholder="メールアドレスを入力" required>
+        </div>
+
+        <!-- パスワード入力 -->
+        <div class="form-group">
+            <label for="password">パスワード</label>
+            <input type="password" id="password" name="password" placeholder="パスワードを入力" required>
+        </div>
+
+        <!-- ログインボタン -->
+        <button type="submit" class="login-button">ログイン</button>
+    </form>
+</div>
+</body>
+</html>
