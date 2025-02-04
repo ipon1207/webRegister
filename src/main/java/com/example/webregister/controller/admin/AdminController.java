@@ -40,7 +40,7 @@ public class AdminController {
 
     }
 
-    @PutMapping("/admin/userEdit/updateUser")
+    @PostMapping("/admin/userEdit/updateUser")
     public String updateUser(@ModelAttribute User editUser, Model model) {
 
         userService.updateById(editUser);

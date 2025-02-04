@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>USER LIST</title>
+    <script>
+        function confirmDelete() {
+            return confirm('本当に削除しますか？');
+        }
+    </script>
+</head>
+<body>
+<!-- メイン画面に戻るボタン -->
+<a th:href="@{/admin}" class="back-button">&larr; メイン画面に戻る</a>
+<h1>ユーザー一覧</h1>
+<div th:if="${userList}">
+    <table>
+        <thead>
+        <tr>
+            <th>ユーザー名</th>
+            <th>メールアドレス</th>
+            <th>権限</th>
+            <th>作成日時</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${userList}">
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.mail}"></td>
+            <td th:text="${user.role}"></td>
+            <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+            <td>
+                <form method="post" th:action="@{/admin/userEdit}">
+                    <input type="hidden" name="id" th:value="${user.userId}" />
+                    <button type="submit" class="edit-button">編集</button>
+                </form>
+                <form method="post" th:action="@{/admin/userDelete}">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <input type="hidden" name="id" th:value="${user.userId}" />
+                    <button type="submit" class="delete-button" onclick="return confirmDelete();">削除</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:if="${#lists.isEmpty(userList)}">
+    <p>データがありません。</p>
+</div>
+</body>
+</html>
