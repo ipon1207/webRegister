@@ -17,9 +17,4 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/admin")
-    public String showAdminPage() {
-        return "admin";
-    }
-
 }

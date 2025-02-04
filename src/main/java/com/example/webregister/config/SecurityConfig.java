@@ -1,6 +1,6 @@
 package com.example.webregister.config;
 
-import com.example.webregister.service.UserDetailsService;
+import com.example.webregister.service.user.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

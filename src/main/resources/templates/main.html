@@ -26,10 +26,9 @@
     </form>
 
     <!-- 管理者ページへのリンク -->
-    <a sec:authorize="hasAuthority('ROLE_ADMIN')"
-       href="./admin.html"
-       th:href="@{/admin}"
-       class="button-link">管理者ページ</a><br>
+    <form method="get" sec:authorize="hasAuthority('ROLE_ADMIN')" th:action="@{/admin}">
+        <button type="submit">管理者ページ</button>
+    </form>
 
     <!-- ログアウト -->
     <form th:action="@{/logout}" method="post" class="logout">
