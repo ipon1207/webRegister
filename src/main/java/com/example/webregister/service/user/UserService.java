@@ -18,7 +18,7 @@ public class UserService {
     public List<User> searchAll() {
 
         List<User> users;
-        users = userRepository.findAll();
+        users = userRepository.findAllByOrderByUserNameAsc();
         if (users.isEmpty()) {
             System.out.println("No users found");
         }
@@ -43,7 +43,7 @@ public class UserService {
         existingUser = userRepository.findByUserId(user.getUserId());
         existingUser.setUserName(user.getUserName());
         existingUser.setMail(user.getMail());
-        existingUser.setPassword(user.getPassword());
+        existingUser.setPassword(encoder.encode(user.getPassword()));
         existingUser.setRole(user.getRole());
         userRepository.save(existingUser);
 
