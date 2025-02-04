@@ -10,17 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
     UserService userService;
 
-    @GetMapping("/admin")
+    @GetMapping
     public String showAdminPage() {
         return "admin/admin";
     }
 
-    @GetMapping("/admin/userList")
+    @GetMapping("/userList")
     public String showUserListPage(Model model) {
 
         List<User> userList;
@@ -30,7 +31,7 @@ public class AdminController {
 
     }
 
-    @PostMapping("/admin/userEdit")
+    @PostMapping("/userEdit")
     public String showUserEditPage(@RequestParam("id") Long editId, Model model) {
 
         User editUser;
@@ -40,25 +41,35 @@ public class AdminController {
 
     }
 
-    @PostMapping("/admin/userEdit/updateUser")
-    public String updateUser(@ModelAttribute User editUser, Model model) {
+    @PostMapping("/userEdit/updateUser")
+    public String updateUser(@ModelAttribute User editUser) {
 
         userService.updateById(editUser);
-        List<User> userList;
-        userList = userService.searchAll();
-        model.addAttribute("userList", userList);
-        return "admin/userList";
+        return "redirect:/admin/userList";
 
     }
 
-    @DeleteMapping("/admin/userDelete")
-    public String deleteUser(@RequestParam("id") Long deleteId, Model model) {
+    @DeleteMapping("/userDelete")
+    public String deleteUser(@RequestParam("id") Long deleteId) {
 
         userService.deleteById(deleteId);
-        List<User> userList;
-        userList = userService.searchAll();
-        model.addAttribute("userList", userList);
-        return "admin/userList";
+        return "redirect:/admin/userList";
+
+    }
+
+    @GetMapping("/userRegister")
+    public String showRegisterPage(Model model) {
+
+        model.addAttribute("saveUser", new User());
+        return "admin/userRegister";
+
+    }
+
+    @PostMapping("/userRegister/save")
+    public String userSave(@ModelAttribute User saveUser, Model model) {
+
+        userService.insertUser(saveUser);
+        return "admin/admin";
 
     }
 

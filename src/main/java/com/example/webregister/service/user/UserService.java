@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -18,7 +19,7 @@ public class UserService {
     public List<User> searchAll() {
 
         List<User> users;
-        users = userRepository.findAllByOrderByUserNameAsc();
+        users = userRepository.findAllByOrderByUserIdAsc();
         if (users.isEmpty()) {
             System.out.println("No users found");
         }
@@ -52,6 +53,14 @@ public class UserService {
     public void deleteById(Long searchId) {
 
         userRepository.deleteById(searchId);
+
+    }
+
+    public void insertUser(User user) {
+
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setCreatedAt(LocalDateTime.now());
+        userRepository.save(user);
 
     }
 
