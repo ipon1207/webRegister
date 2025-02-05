@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>商品編集</title>
+</head>
+<body>
+<!-- 商品一覧画面に戻るボタン -->
+<a th:href="@{/main/productList}" class="back-button">&larr; 商品一覧に戻る</a>
+
+<h1>商品編集</h1>
+<form method="post" th:action="@{/main/productList/updateProduct}" th:object="${editProduct}">
+    <input type="hidden" th:field="*{productId}" required/>
+    <label>
+        商品名
+        <input type="text" th:field="*{productName}" placeholder="例: ホットドッグ" required/>
+    </label>
+    <label>
+        商品価格
+        <input type="text" th:field="*{productValue}" placeholder="例: 500" required/>
+    </label>
+    <input type="hidden" th:field="*{userId}" required/>
+    <input type="hidden" th:field="*{createdAt}" required/>
+    <button type="submit">保存</button>
+</form>
+</body>
+</html>

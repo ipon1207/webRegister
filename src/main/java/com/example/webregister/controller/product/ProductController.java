@@ -27,9 +27,27 @@ public class ProductController {
             model.addAttribute("productList", productList);
             return "product/productList";
         }
-        productList = productService.searchByUserId(userPrincipal.getUserId());
+        productList = productService.searchAllByUserId(userPrincipal.getUserId());
         model.addAttribute("productList", productList);
         return "product/productList";
+
+    }
+
+    @PostMapping("/productList/editProduct")
+    public String showProductEditPage(@RequestParam("id") Long productId, Model model) {
+
+        Product editProduct;
+        editProduct = productService.searchByProductId(productId);
+        model.addAttribute("editProduct", editProduct);
+        return "product/productEdit";
+
+    }
+
+    @PostMapping("/productList/updateProduct")
+    public String updateProduct(@ModelAttribute Product updateProduct) {
+
+        productService.updateByProductId(updateProduct);
+        return "redirect:/main/productList";
 
     }
 

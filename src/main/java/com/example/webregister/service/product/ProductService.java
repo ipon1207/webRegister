@@ -13,7 +13,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> searchByUserId(Long userId) {
+    public List<Product> searchAllByUserId(Long userId) {
 
         List<Product> productList;
         productList = productRepository.findByUserIdAndIsDeletedFalseOrderByProductIdAsc(userId);
@@ -32,6 +32,27 @@ public class ProductService {
             System.out.println("No products found");
         }
         return productList;
+
+    }
+
+    public Product searchByProductId(Long productId) {
+
+        Product product;
+        product = productRepository.findByProductId(productId);
+        if (product == null) {
+            System.out.println("No product found");
+        }
+        return product;
+
+    }
+
+    public void updateByProductId(Product product) {
+
+        Product existingProduct;
+        existingProduct = productRepository.findByProductId(product.getProductId());
+        existingProduct.setProductName(product.getProductName());
+        existingProduct.setProductValue(product.getProductValue());
+        productRepository.save(existingProduct);
 
     }
 

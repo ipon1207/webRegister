@@ -14,6 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllByIsDeletedFalseOrderByProductIdAsc();
     List<Product> findByUserIdAndIsDeletedFalseOrderByProductIdAsc(Long userId);
+    Product findByProductId(Long productId);
     @Modifying
     @Transactional
     @Query("UPDATE Product p SET p.isDeleted = true WHERE p.productId = :productId")
