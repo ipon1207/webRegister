@@ -5,6 +5,7 @@ import com.example.webregister.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -43,6 +44,14 @@ public class ProductService {
             System.out.println("No product found");
         }
         return product;
+
+    }
+
+    public void insertProduct(Product product, Long userId) {
+
+        product.setUserId(userId);
+        product.setCreatedAt(LocalDateTime.now());
+        productRepository.save(product);
 
     }
 

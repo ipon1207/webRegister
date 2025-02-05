@@ -1,4 +1,4 @@
-package com.example.webregister.controller.product;
+package com.example.webregister.controller;
 
 import com.example.webregister.model.Product;
 import com.example.webregister.model.UserPrincipal;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/main/productList")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/productList")
+    @GetMapping("")
     public String showProductListPage(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
 
         List<Product> productList;
@@ -33,7 +33,15 @@ public class ProductController {
 
     }
 
-    @PostMapping("/productList/editProduct")
+    @GetMapping("/productRegister")
+    public String showProductRegisterPage(Model model) {
+
+        model.addAttribute("saveProduct", new Product());
+        return "product/productRegister";
+
+    }
+
+    @PostMapping("/editProduct")
     public String showProductEditPage(@RequestParam("id") Long productId, Model model) {
 
         Product editProduct;
@@ -43,7 +51,7 @@ public class ProductController {
 
     }
 
-    @PostMapping("/productList/updateProduct")
+    @PostMapping("/updateProduct")
     public String updateProduct(@ModelAttribute Product updateProduct) {
 
         productService.updateByProductId(updateProduct);
@@ -51,7 +59,15 @@ public class ProductController {
 
     }
 
-    @DeleteMapping("/productList/deleteProduct")
+    @PostMapping("/productRegister/save")
+    public String productSave(@ModelAttribute Product product, @AuthenticationPrincipal UserPrincipal userPrincipal) {
+
+        productService.insertProduct(product, userPrincipal.getUserId());
+        return "redirect:/main/productList";
+
+    }
+
+    @DeleteMapping("/deleteProduct")
     public String deleteProduct(@RequestParam("id") Long deleteProductId) {
 
         productService.deleteByProductId(deleteProductId);

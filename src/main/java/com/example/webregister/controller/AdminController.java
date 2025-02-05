@@ -1,4 +1,4 @@
-package com.example.webregister.controller.admin;
+package com.example.webregister.controller;
 
 import com.example.webregister.model.User;
 import com.example.webregister.service.user.UserService;
