@@ -1,4 +1,4 @@
-package com.example.webregister.service.product;
+package com.example.webregister.service;
 
 import com.example.webregister.model.Product;
 import com.example.webregister.repository.ProductRepository;

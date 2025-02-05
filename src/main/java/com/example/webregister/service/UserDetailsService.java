@@ -1,4 +1,4 @@
-package com.example.webregister.service.user;
+package com.example.webregister.service;
 
 import com.example.webregister.model.User;
 import com.example.webregister.model.UserPrincipal;

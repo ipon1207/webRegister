@@ -1,7 +1,7 @@
 package com.example.webregister.controller;
 
 import com.example.webregister.model.User;
-import com.example.webregister.service.user.UserService;
+import com.example.webregister.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

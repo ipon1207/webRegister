@@ -2,7 +2,7 @@ package com.example.webregister.controller;
 
 import com.example.webregister.model.Product;
 import com.example.webregister.model.UserPrincipal;
-import com.example.webregister.service.product.ProductService;
+import com.example.webregister.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
