@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レジ</title>
+    <link rel="stylesheet" href="/css/cashRegister.css">
+    <script defer src="/js/cashRegister.js"></script>
+    <meta name="csrf-token" th:content="${_csrf.token}">
+    <meta name="csrf-header" th:content="${_csrf.headerName}">
+</head>
+<body>
+<h1>POSレジ</h1>
+
+<div id="product-list">
+    <h2>商品リスト</h2>
+    <ul>
+        <th:block th:each="product : ${productList}">
+            <li>
+                <button class="product-btn"
+                        th:data-id="${product.productId}"
+                        th:data-name="${product.productName}"
+                        th:data-price="${product.productValue}"
+                        th:text="${product.productName + ' - ¥' + product.productValue}">
+                </button>
+            </li>
+        </th:block>
+    </ul>
+</div>
+
+<div id="cart">
+    <h2>カート</h2>
+    <ul id="cart-items"></ul>
+    <p>合計金額: ¥<span id="total-price">0</span></p>
+</div>
+
+<div id="payment">
+    <h2>支払い</h2>
+    <p>もらった金額: ¥<span id="received-amount">0</span></p>
+    <div id="keypad">
+        <button class="num-btn" data-value="1">1</button>
+        <button class="num-btn" data-value="2">2</button>
+        <button class="num-btn" data-value="3">3</button>
+        <button class="num-btn" data-value="4">4</button>
+        <button class="num-btn" data-value="5">5</button>
+        <button class="num-btn" data-value="6">6</button>
+        <button class="num-btn" data-value="7">7</button>
+        <button class="num-btn" data-value="8">8</button>
+        <button class="num-btn" data-value="9">9</button>
+        <button class="num-btn" data-value="0">0</button>
+        <button id="clear">クリア</button>
+    </div>
+    <button id="checkout">会計</button>
+    <p>お釣り: ¥<span id="change-amount">0</span></p>
+</div>
+</body>
+</html>

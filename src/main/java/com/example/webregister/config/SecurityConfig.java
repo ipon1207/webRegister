@@ -31,9 +31,9 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/", "/favicon.ico", "/error")
+                        .requestMatchers("/", "/favicon.ico", "/error", "/css/**", "/js/**", "/images/**")
                         .permitAll()
-                        .requestMatchers("/main/**")
+                        .requestMatchers("/main/**", "/checkout")
                         .hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin/**")
                         .hasRole("ADMIN")

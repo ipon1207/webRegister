@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CHECKOUT</title>
+</head>
+<body>
+    <h1>会計確認</h1>
+    <p th:text="${totalPrice}"></p>
+    <a th:href="@{/main}" class="back-button">&larr; メイン画面に戻る</a>
+    <form method="get" th:action="@{/main/cashRegister}">
+        <button type="submit">レジに戻る</button>
+    </form>
+</body>
