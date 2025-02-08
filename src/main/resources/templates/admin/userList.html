@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin/userList.css">
     <title>USER LIST</title>
     <script>
         function confirmDelete() {
@@ -10,9 +12,6 @@
     </script>
 </head>
 <body>
-<!-- メイン画面に戻るボタン -->
-<a th:href="@{/admin}" class="back-button">&larr; メイン画面に戻る</a>
-<h1>ユーザー一覧</h1>
 <div th:if="${userList}">
     <table>
         <thead>
@@ -48,5 +47,8 @@
 <div th:if="${#lists.isEmpty(userList)}">
     <p>データがありません。</p>
 </div>
+<form th:action="@{/admin/userRegister}" method="get" class="ajax-form">
+    <button type="submit" class="register-button">グループ新規登録</button>
+</form>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/sale/saleLog.css">
     <title>SALE LOG</title>
     <script>
         function confirmDelete() {
@@ -11,9 +12,6 @@
     </script>
 </head>
 <body>
-<!-- メイン画面に戻るボタン -->
-<a th:href="@{/main}" class="back-button">&larr; メイン画面に戻る</a>
-<h1>売り上げ記録</h1>
 <div th:if="${saleLog}">
     <table>
         <thead>
@@ -45,12 +43,12 @@
             <td th:text="${#temporals.format(sale.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
             <td>
                 <form method="post" th:action="@{/main/saleLog/detail}">
-                    <input type="hidden" name="id" th:value="${sale.saleId}" />
+                    <input type="hidden" name="id" th:value="${sale.saleId}" class="ajax-form" />
                     <button type="submit" class="edit-button">詳細</button>
                 </form>
                 <form method="post" th:action="@{/main/saleLog/deleteLog}">
                     <input type="hidden" name="_method" value="DELETE" />
-                    <input type="hidden" name="id" th:value="${sale.saleId}" />
+                    <input type="hidden" name="id" th:value="${sale.saleId}" class="ajax-form" />
                     <button type="submit" class="delete-button" onclick="return confirmDelete();">削除</button>
                 </form>
             </td>
