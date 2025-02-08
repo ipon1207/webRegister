@@ -5,6 +5,8 @@ import com.example.webregister.repository.SaleDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SaleDetailService {
 
@@ -21,6 +23,20 @@ public class SaleDetailService {
         saveSaleDetail.setQuantity(quantity);
         saveSaleDetail.setAmount(amount);
         saleDetailRepository.save(saveSaleDetail);
+
+    }
+
+    public List<SaleDetail> searchAllBySaleId(Long saleId) {
+
+        List<SaleDetail> detailList;
+        detailList = saleDetailRepository.findBySaleIdOrderBySaleDetailIdAsc(saleId);
+        return detailList;
+
+    }
+
+    public void deleteBySaleId(Long saleId) {
+
+        saleDetailRepository.deleteBySaleId(saleId);
 
     }
 

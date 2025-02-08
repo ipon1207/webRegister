@@ -2,6 +2,7 @@ package com.example.webregister.controller;
 
 import com.example.webregister.model.Product;
 import com.example.webregister.model.Sale;
+import com.example.webregister.model.SaleDetail;
 import com.example.webregister.model.UserPrincipal;
 import com.example.webregister.service.ProductService;
 import com.example.webregister.service.SaleDetailService;
@@ -32,6 +33,16 @@ public class SaleController {
         productList = productService.searchAllByUserId(userPrincipal.getUserId());
         model.addAttribute("productList", productList);
         return "sale/cashRegister";
+
+    }
+
+    @GetMapping("/main/saleLog")
+    public String showSaleLogPage(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
+
+        List<Sale> saleLog;
+        saleLog = saleService.searchAllByUserId(userPrincipal.getUserId());
+        model.addAttribute("saleLog", saleLog);
+        return "sale/saleLog";
 
     }
 
@@ -69,13 +80,13 @@ public class SaleController {
         return "sale/checkout";
     }
 
-    @GetMapping("/main/saleLog")
-    public String showSaleLogPage(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
+    @PostMapping("/main/saleLog/detail")
+    public String showSaleDetailLogPage(@RequestParam("id") Long saleId, Model model) {
 
-        List<Sale> saleLog;
-        saleLog = saleService.searchAllByUserId(userPrincipal.getUserId());
-        model.addAttribute("saleLog", saleLog);
-        return "sale/saleLog";
+        List<SaleDetail> SaleDetailLog;
+        SaleDetailLog = saleDetailService.searchAllBySaleId(saleId);
+        model.addAttribute("saleDetailLog", SaleDetailLog);
+        return "sale/saleDetailLog";
 
     }
 
@@ -83,6 +94,7 @@ public class SaleController {
     public String deleteSaleLog(@RequestParam("id") Long deleteId) {
 
         saleService.deleteBySaleId(deleteId);
+        saleDetailService.deleteBySaleId(deleteId);
         return "redirect:/main/saleLog";
 
     }
