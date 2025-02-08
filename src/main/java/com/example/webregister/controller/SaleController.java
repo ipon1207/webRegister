@@ -1,6 +1,7 @@
 package com.example.webregister.controller;
 
 import com.example.webregister.model.Product;
+import com.example.webregister.model.Sale;
 import com.example.webregister.model.UserPrincipal;
 import com.example.webregister.service.ProductService;
 import com.example.webregister.service.SaleDetailService;
@@ -9,15 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 @Controller
-public class CashRegisterController {
+public class SaleController {
 
     @Autowired
     ProductService productService;
@@ -32,7 +31,7 @@ public class CashRegisterController {
         List<Product> productList;
         productList = productService.searchAllByUserId(userPrincipal.getUserId());
         model.addAttribute("productList", productList);
-        return "cashRegister";
+        return "sale/cashRegister";
 
     }
 
@@ -67,7 +66,25 @@ public class CashRegisterController {
         }
 
         model.addAttribute("totalPrice", totalAmount);
-        return "checkout";
+        return "sale/checkout";
+    }
+
+    @GetMapping("/main/saleLog")
+    public String showSaleLogPage(@AuthenticationPrincipal UserPrincipal userPrincipal, Model model) {
+
+        List<Sale> saleLog;
+        saleLog = saleService.searchAllByUserId(userPrincipal.getUserId());
+        model.addAttribute("saleLog", saleLog);
+        return "sale/saleLog";
+
+    }
+
+    @DeleteMapping("/main/saleLog/deleteLog")
+    public String deleteSaleLog(@RequestParam("id") Long deleteId) {
+
+        saleService.deleteBySaleId(deleteId);
+        return "redirect:/main/saleLog";
+
     }
 
 }

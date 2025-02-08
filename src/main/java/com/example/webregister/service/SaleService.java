@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class SaleService {
@@ -24,6 +25,23 @@ public class SaleService {
         saveSale.setCreatedAt(LocalDateTime.now());
         savedSale = saleRepository.save(saveSale);
         return savedSale.getSaleId();
+
+    }
+
+    public List<Sale> searchAllByUserId(Long userId) {
+
+        List<Sale> saleList;
+        saleList = saleRepository.findByUserIdOrderBySaleIdAsc(userId);
+        if (saleList.isEmpty()) {
+            System.out.println("No sales found");
+        }
+        return saleList;
+
+    }
+
+    public void deleteBySaleId(Long saleId) {
+
+        saleRepository.deleteBySaleId(saleId);
 
     }
 
