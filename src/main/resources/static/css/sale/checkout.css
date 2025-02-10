@@ -1,0 +1,76 @@
+/* 全体の設定 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* コンテナ */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 50px;
+    font-size: 2rem;
+}
+
+/* 戻るボタン */
+a.back-button {
+    display: block;
+    text-align: left;
+    padding: 10px;
+    margin: 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #2980b9;
+}
+
+a.back-button:hover {
+    text-decoration: underline;
+}
+
+/* 会計金額 */
+p {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 20px;
+}
+
+/* フォームとボタン */
+form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    form button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}

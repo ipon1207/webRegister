@@ -2,12 +2,14 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/sale/checkout.css">
     <title>CHECKOUT</title>
 </head>
 <body>
-    <h1>会計確認</h1>
-    <p th:text="${totalPrice}"></p>
     <a th:href="@{/main}" class="back-button">&larr; メイン画面に戻る</a>
+    <h1>会計確認</h1>
+    <p th:text="${totalPrice} + '円'"></p>
     <form method="get" th:action="@{/main/cashRegister}">
         <button type="submit">レジに戻る</button>
     </form>

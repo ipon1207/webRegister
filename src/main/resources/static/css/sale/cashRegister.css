@@ -68,6 +68,26 @@ button:hover {
     color: white;
 }
 
+.clear-btn {
+    padding: 12px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.checkout-btn {
+    padding: 12px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
 #clear {
     background-color: #dc3545;
     color: white;

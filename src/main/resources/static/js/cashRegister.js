@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("受け取った金額が不足しています！");
         } else {
             const changeAmount = receivedAmount - totalPrice;
-
             // 送信データの作成
             const orderData = {
                 totalPrice: totalPrice,
