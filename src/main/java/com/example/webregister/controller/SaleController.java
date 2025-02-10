@@ -95,7 +95,7 @@ public class SaleController {
 
         saleService.deleteBySaleId(deleteId);
         saleDetailService.deleteBySaleId(deleteId);
-        return "redirect:/main/saleLog";
+        return "redirect:/main";
 
     }
 

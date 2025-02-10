@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/sale/saleDetailLog.css">
     <title>SALE DETAIL LOG</title>
 </head>
 <body>
-<!-- 取引履歴に戻るボタン -->
-<a th:href="@{/main/saleLog}" class="back-button">&larr; 取引履歴に戻る</a>
-<h1>売り上げの詳細</h1>
+<a th:href="@{/main}" class="back-button">&larr; メインページに戻る</a>
+<h1>売り上げ詳細</h1>
 <div class="table-container">
     <table>
         <thead>
         <tr>
-            <th>Sale ID</th>
             <th>商品名</th>
             <th>単価</th>
             <th>数量</th>
@@ -21,7 +21,6 @@
         </thead>
         <tbody>
         <tr th:each="saleProduct : ${saleDetailLog}">
-            <td th:text="${saleProduct.saleId}"></td>
             <td th:text="${saleProduct.productName}"></td>
             <td th:text="${saleProduct.productValue}"></td>
             <td th:text="${saleProduct.quantity}"></td>
@@ -29,9 +28,6 @@
         </tr>
         </tbody>
     </table>
-</div>
-<div th:if="${#lists.isEmpty(saleDetailLog)}">
-    <p>データがありません。</p>
 </div>
 </body>
 </html>
