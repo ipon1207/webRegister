@@ -16,11 +16,6 @@ public class AdminController {
     @Autowired
     UserService userService;
 
-    @GetMapping
-    public String showAdminPage() {
-        return "admin/admin";
-    }
-
     @GetMapping("/userList")
     public String showUserListPage(Model model) {
 
@@ -45,7 +40,7 @@ public class AdminController {
     public String updateUser(@ModelAttribute User editUser) {
 
         userService.updateById(editUser);
-        return "redirect:/admin/userList";
+        return "redirect:/main";
 
     }
 
@@ -53,7 +48,7 @@ public class AdminController {
     public String deleteUser(@RequestParam("id") Long deleteId) {
 
         userService.deleteById(deleteId);
-        return "redirect:/admin/userList";
+        return "redirect:/main";
 
     }
 
@@ -69,7 +64,7 @@ public class AdminController {
     public String userSave(@ModelAttribute User saveUser, Model model) {
 
         userService.insertUser(saveUser);
-        return "admin/admin";
+        return "redirect:/main";
 
     }
 

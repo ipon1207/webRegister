@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ユーザー新規登録</title>
+    <link rel="stylesheet" href="/css/admin/userRegister.css">
+    <title>USER REGISTER</title>
 </head>
 
 <body>
-<!-- メイン画面に戻るボタン -->
-<a th:href="@{/admin}" class="back-button">&larr; 管理者画面に戻る</a>
+<a th:href="@{/main}" class="back-button">&larr; メイン画面に戻る</a>
 
 <div class="container">
     <h1>ユーザー新規登録</h1>
     <form th:action="@{/admin/userRegister/save}" th:object="${saveUser}" method="post">
-        <!-- 団体名入力欄 -->
+        <!-- ユーザー名入力欄 -->
         <div class="form-group">
-            <label for="groupName">団体名</label>
+            <label for="groupName">ユーザー名</label>
             <input type="text" id="groupName" th:field="*{userName}" required />
         </div>
 
