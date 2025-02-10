@@ -2,11 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>商品編集</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/product/productEdit.css">
+    <title>PRODUCT EDIT</title>
 </head>
 <body>
 <!-- 商品一覧画面に戻るボタン -->
-<a th:href="@{/main/productList}" class="back-button">&larr; 商品一覧に戻る</a>
+<a th:href="@{/main}" class="back-button">&larr; メインページに戻る</a>
 
 <h1>商品編集</h1>
 <form method="post" th:action="@{/main/productList/updateProduct}" th:object="${editProduct}">
