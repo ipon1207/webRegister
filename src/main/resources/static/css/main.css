@@ -1,0 +1,131 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-y: scroll;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ヘッダー配置 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* h1を左上に固定 */
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    position: absolute;
+    left: 60px; /* 開閉ボタンと重ならないよう調整 */
+    top: 15px;
+}
+
+/* ログアウトボタンを右上に固定 */
+.logout {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    margin: 0;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* メインレイアウト */
+main {
+    display: flex;
+    flex: 1;
+    margin-top: 60px; /* ヘッダーの高さと一致 */
+}
+
+/* サイドバー */
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    position: fixed;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sidebar button:hover {
+    background-color: #444;
+}
+
+/* コンテンツ領域 */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    margin-left: 200px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* サイドバー開閉時のコンテンツ位置 */
+.content.shifted {
+    margin-left: 0;
+}
+
+/* サイドバー開閉ボタン */
+.toggle-sidebar {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1100;
+}

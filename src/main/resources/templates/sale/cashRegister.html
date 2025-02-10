@@ -12,7 +12,7 @@
 <body>
 
 <div id="product-list">
-    <h2>商品リスト</h2>
+    <h2>商品</h2>
     <ul>
         <th:block th:each="product : ${productList}">
             <li>
@@ -47,9 +47,9 @@
         <button class="num-btn" data-value="8">8</button>
         <button class="num-btn" data-value="9">9</button>
         <button class="num-btn" data-value="0">0</button>
-        <button id="clear">クリア</button>
+        <button class="num-btn" id="clear">クリア</button>
     </div>
-    <button id="checkout">会計</button>
+    <button class="num-btn" id="checkout">会計</button>
     <p>お釣り: ¥<span id="change-amount">0</span></p>
 </div>
 </body>

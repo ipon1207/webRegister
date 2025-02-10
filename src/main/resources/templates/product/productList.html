@@ -34,11 +34,11 @@
             <td th:text="${product.productValue}"></td>
             <td th:text="${#temporals.format(product.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
             <td>
-                <form method="post" th:action="@{/main/productList/editProduct}" class="ajax-form">
+                <form method="post" th:action="@{/main/productList/editProduct}" >
                     <input type="hidden" name="id" th:value="${product.productId}" />
                     <button type="submit" class="edit-button">編集</button>
                 </form>
-                <form method="post" th:action="@{/main/productList/deleteProduct}" class="ajax-form">
+                <form method="post" th:action="@{/main/productList/deleteProduct}" >
                     <input type="hidden" name="_method" value="DELETE" />
                     <input type="hidden" name="id" th:value="${product.productId}" />
                     <button type="submit" class="delete-button" onclick="return confirmDelete();">削除</button>
@@ -51,7 +51,7 @@
 <div th:if="${#lists.isEmpty(productList)}">
     <p>データがありません。</p>
 </div>
-<form method="get" th:action="@{/main/productList/productRegister}" class="ajax-form">
+<form method="get" th:action="@{/main/productList/productRegister}" >
     <button type="submit" class="register-button">商品新規登録</button>
 </form>
 </body>
