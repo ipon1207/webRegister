@@ -16,11 +16,14 @@ public class UserPrincipal implements UserDetails {
     private final Long userId;
     @Getter
     private final String userName;
+    @Getter
+    private final String mail;
 
     public UserPrincipal(User user) {
         this.user = user;
         this.userId = user.getUserId();
         this.userName = user.getUserName();
+        this.mail = user.getMail();
         this.authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
     }
 
@@ -36,7 +39,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getMail();
+        return user.getUserName();
     }
 
     @Override
