@@ -55,7 +55,7 @@ public class ProductController {
     public String updateProduct(@ModelAttribute Product updateProduct) {
 
         productService.updateByProductId(updateProduct);
-        return "redirect:/main/productList";
+        return "redirect:/main";
 
     }
 
@@ -63,7 +63,7 @@ public class ProductController {
     public String productSave(@ModelAttribute Product product, @AuthenticationPrincipal UserPrincipal userPrincipal) {
 
         productService.insertProduct(product, userPrincipal.getUserId());
-        return "redirect:/main/productList";
+        return "redirect:/main";
 
     }
 
@@ -71,7 +71,7 @@ public class ProductController {
     public String deleteProduct(@RequestParam("id") Long deleteProductId) {
 
         productService.deleteByProductId(deleteProductId);
-        return "redirect:/main/productList";
+        return "redirect:/main";
 
     }
 
