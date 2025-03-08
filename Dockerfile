@@ -9,7 +9,7 @@ ENV HOME=/${WORKDIR} \
     HOST=0.0.0.0
 WORKDIR ${HOME}
 COPY ./ ${HOME}
-RUN ./gradlew build
+RUN chmod +x ./gradlew build
 #
 # Package stage
 #
